@@ -1,0 +1,27 @@
+name: Alert Crackerjack
+description: 'Show alert on crackerjack pc'
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+        - name: Execute remote ssh command
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script_stop: true
+          script: | 
+            notify-send 'Correcto!!'
+            ls -l ~
+
