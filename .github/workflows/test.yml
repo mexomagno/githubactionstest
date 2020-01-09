@@ -1,5 +1,4 @@
 name: Alert Crackerjack
-description: 'Show alert on crackerjack pc'
 on:
   push:
     branches:
