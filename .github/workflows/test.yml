@@ -23,5 +23,4 @@ jobs:
           script: | 
             notify-send 'Correcto!!'
             ls -l ~
-            . ~/.bash_aliases
-            beep
+            DISPLAY=:0 paplay /usr/share/sounds/freedesktop/stereo/complete.oga
