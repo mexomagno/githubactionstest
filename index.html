@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.16.9/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <!-- example of injection point where you write your app template -->
+    <div id="q-app">
+        <q-layout view="hhh lpR fff">
+
+        <q-header reveal bordered class="bg-primary text-white" height-hint="98">
+            <q-toolbar>
+            <q-toolbar-title>
+                <q-avatar>
+                <img src="assets/shrek.webp">
+                </q-avatar>
+                Title
+            </q-toolbar-title>
+            </q-toolbar>
+
+            <q-tabs align="left">
+            <q-route-tab v-for="tab in ntabs" :to="`/page${tab}`" :label="`Page ${tab}`" ></q-route-tab>
+            </q-tabs>
+        </q-header>
+
+        <q-page-container>
+            <q-page>
+                <q-row class="items-center">
+                    <q-col class="justiy-center"></q-col>
+                    <q-card style="max-width: 400px">
+                        <q-card-title>Ola</q-card-title>
+                        <q-card-subtitle>ola</q-card-subtitle>
+                        <q-card-content>
+                            no se po
+                    </q-card-content>
+                    <q-card-actions>
+                        <q-btn @click="lessTabs">Menos tabs</q-btn>
+                        <q-btn @click="moreTabs">Mas tabs</q-btn>
+                    </q-card-actions>
+                </q-card>
+            </q-row>
+            </q-page>
+        </q-page-container>
+
+        <q-footer bordered class="bg-grey-8 text-white">
+            <q-toolbar>
+            <q-toolbar-title>
+                <q-avatar>
+                <img src="assets/shrek.webp">
+                </q-avatar>
+                <div>Title</div>
+            </q-toolbar-title>
+            </q-toolbar>
+        </q-footer>
+
+        </q-layout>
+    </div>
+
+    <!-- Add the following at the end of your body tag -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.16.9/dist/quasar.umd.prod.js"></script>
+    <script>
+      /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+      const app = Vue.createApp({
+        data () {
+          return {
+            ntabs: 3
+          }
+        },
+        methods: {
+            moreTabs() {
+                this.ntabs += 1
+            },
+            lessTabs() {
+                this.ntabs -= 1
+            }
+        }
+      })
+
+      app.use(Quasar)
+      app.mount('#q-app')
+    </script>
+  </body>
+</html>
